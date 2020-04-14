@@ -5,17 +5,19 @@ package expriment_test;
  *
  */
 import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
-        if(args.length<1)
-        {
-            System.out.println("Please Input Username and Password");
-        }
-        if(args.length<2)
-        {
-            System.out.println("Please Input Password");
-        }
-        System.out.println(sha256hex(args[0]));
+        Scanner sc = new Scanner(System.in);
+        String InputUserName=sc.next();
+        String InputPassWord=sc.next();
+        InputPassWord=sha256hex(InputPassWord);
+        String Username="MasterCat";
+        String Password=sha256hex("123456");
+        if(InputUserName.equals(Username)&&InputPassWord.equals(Password))
+            System.out.println("OK");
     }
     public static String sha256hex(String input) {
         return DigestUtils.sha256Hex(input);
